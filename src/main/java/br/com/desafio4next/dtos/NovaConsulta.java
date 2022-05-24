@@ -1,13 +1,14 @@
 package br.com.desafio4next.dtos;
 
 import br.com.desafio4next.models.Consultorio;
-
-import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.Calendar;
 
 public class NovaConsulta {
 
     private String nome;
-    private LocalDateTime data;
+    private Calendar data_consulta;
+    private LocalTime hora_consulta;
     private Consultorio consultorio;
 
     public String getNome() {
@@ -18,12 +19,20 @@ public class NovaConsulta {
         this.nome = nome;
     }
 
-    public LocalDateTime getData() {
-        return data;
+    public Calendar getData_consulta() {
+        return data_consulta;
     }
 
-    public void setData(LocalDateTime data) {
-        this.data = data;
+    public void setData_consulta(Calendar data_consulta) {
+        this.data_consulta = data_consulta;
+    }
+
+    public LocalTime getHora_consulta() {
+        return hora_consulta;
+    }
+
+    public void setHora_consulta(LocalTime hora_consulta) {
+        this.hora_consulta = hora_consulta;
     }
 
     public Consultorio getConsultorio() {

@@ -1,23 +1,32 @@
 package br.com.desafio4next.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sun.istack.NotNull;
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.Calendar;
+import java.util.Date;
 
 @Entity
 @Table(name = "tb_consulta")
 public class Consulta {
-    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column (name = "nome_paciente") @NotNull
+    @Column(name = "nome_paciente")
+    @NotNull
     private String nome;
-    @Column @NotNull
-    private LocalDateTime data;
-    @Column(name="id_Medico")
-    private Integer id_medico;
-    @Enumerated (EnumType.STRING)
+    @Column(name = "data")
+    @Temporal(TemporalType.DATE)
+    Calendar data_consulta;
+    @Column(name = "hora")
+    @JsonFormat(pattern = "HH:mm:ss")
+    LocalTime hora_consulta;
+    @Column(name = "nome_medico")
+    private String nomeMedico;
+    @Enumerated(EnumType.STRING)
     private Consultorio consultorio;
 
     public Long getId() {
@@ -36,20 +45,28 @@ public class Consulta {
         this.nome = nome;
     }
 
-    public LocalDateTime getData() {
-        return data;
+    public Calendar getData_consulta() {
+        return data_consulta;
     }
 
-    public void setData(LocalDateTime data) {
-        this.data = data;
+    public void setData_consulta(Calendar data_consulta) {
+        this.data_consulta = data_consulta;
     }
 
-    public Integer getId_medico() {
-        return id_medico;
+    public LocalTime getHora_consulta() {
+        return hora_consulta;
     }
 
-    public void setId_medico(Integer id_medico) {
-        this.id_medico = id_medico;
+    public void setHora_consulta(LocalTime hora_consulta) {
+        this.hora_consulta = hora_consulta;
+    }
+
+    public String getNomeMedico() {
+        return nomeMedico;
+    }
+
+    public void setNomeMedico(String nomeMedico) {
+        this.nomeMedico = nomeMedico;
     }
 
     public Consultorio getConsultorio() {

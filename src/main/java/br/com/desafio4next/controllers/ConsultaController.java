@@ -5,6 +5,7 @@ import br.com.desafio4next.models.Consulta;
 import br.com.desafio4next.repositories.ConsultaRepository;
 import br.com.desafio4next.services.ConsultaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

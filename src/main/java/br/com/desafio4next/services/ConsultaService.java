@@ -15,7 +15,8 @@ public class ConsultaService {
     public void save (NovaConsulta novaConsulta) {
         Consulta consulta = new Consulta();
         consulta.setNome(novaConsulta.getNome());
-        consulta.setData(novaConsulta.getData());
+        consulta.setData_consulta(novaConsulta.getData_consulta());
+        consulta.setHora_consulta(novaConsulta.getHora_consulta());
         consulta.setConsultorio(novaConsulta.getConsultorio());
 
         repository.save(consulta);
