@@ -21,13 +21,11 @@ public class MedicoService {
 
         repository.save(medico);
     }
-
-    public Medico update(Medico medico, String crm) {
-        medico.setCrm(crm);
-        return repository.save(medico);
+    public void updateByNome (String nome) {
+        repository.updateByNome(nome);
     }
 
-    public void delete(String nome) {
+    public void deleteByNome (String nome) {
         repository.deleteByNome(nome);
     }
 }

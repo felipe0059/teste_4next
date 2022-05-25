@@ -18,8 +18,13 @@ public class ConsultaService {
         consulta.setData_consulta(novaConsulta.getData_consulta());
         consulta.setHora_consulta(novaConsulta.getHora_consulta());
         consulta.setConsultorio(novaConsulta.getConsultorio());
+        consulta.setNome_medico(novaConsulta.getNome_medico());
 
         repository.save(consulta);
 
+    }
+
+    public void delete(String nome) {
+        repository.deleteByNome(nome);
     }
 }

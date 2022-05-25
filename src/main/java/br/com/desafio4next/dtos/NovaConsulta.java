@@ -1,45 +1,33 @@
 package br.com.desafio4next.dtos;
 
+
+import br.com.desafio4next.models.Consulta;
 import br.com.desafio4next.models.Consultorio;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import java.time.LocalTime;
 import java.util.Calendar;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class NovaConsulta {
 
     private String nome;
     private Calendar data_consulta;
     private LocalTime hora_consulta;
+    private String nome_medico;
     private Consultorio consultorio;
 
-    public String getNome() {
-        return nome;
-    }
+    public NovaConsulta(Consulta consulta) {
+        this.nome = consulta.getNome();
+        this.data_consulta = consulta.getData_consulta();
+        this.hora_consulta = consulta.getHora_consulta();
+        this.consultorio = consulta.getConsultorio();
+        this.nome_medico = consulta.getNome_medico();
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public Calendar getData_consulta() {
-        return data_consulta;
-    }
-
-    public void setData_consulta(Calendar data_consulta) {
-        this.data_consulta = data_consulta;
-    }
-
-    public LocalTime getHora_consulta() {
-        return hora_consulta;
-    }
-
-    public void setHora_consulta(LocalTime hora_consulta) {
-        this.hora_consulta = hora_consulta;
-    }
-
-    public Consultorio getConsultorio() {
-        return consultorio;
-    }
-
-    public void setConsultorio(Consultorio consultorio) {
-        this.consultorio = consultorio;
     }
 }
