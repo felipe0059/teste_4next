@@ -27,7 +27,7 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication()
                 .passwordEncoder(passwordEncoder())
                 //usuário em memória
-                .withUser("felipe")
+                .withUser("user")
                 .password(passwordEncoder().encode("123"))
                 .roles("ADMIN");
     }
