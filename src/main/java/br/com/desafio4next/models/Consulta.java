@@ -1,15 +1,15 @@
 package br.com.desafio4next.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.sun.istack.NotNull;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import javax.persistence.*;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Calendar;
 
 @Getter
 @Setter
@@ -20,20 +20,31 @@ import java.util.Calendar;
 public class Consulta {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotBlank
     @Column(name = "nome_paciente")
-    @NotNull
     private String nome;
-    @Column
-    @NotNull
-    private String nome_medico;
-    @Column
-    @Temporal(TemporalType.DATE)
-    Calendar data_consulta;
-    @Column
+
+    @Column(name = "nome_medico")
+    @NotBlank
+    private String nomeMedico;
+
+    @Column(name="data_consulta")
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @NotNull(message ="Data é obrigatória")
+    private LocalDate dataConsulta;
+
+    @Column(name="hora_consulta")
+    @NotNull(message ="Hora é obrigatória")
     @JsonFormat(pattern = "HH:mm:ss")
-    LocalTime hora_consulta;
-    @Enumerated(EnumType.STRING)
-    private Consultorio consultorio;
+    private LocalTime horaConsulta;
+
+    @Column(name="numero_consultorio")
+    @NotNull(message ="Numero do consultório é obrigatório!")
+    private Integer numeroConsultorio;
+
+
+
 }

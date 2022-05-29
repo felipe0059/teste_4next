@@ -1,15 +1,18 @@
 package br.com.desafio4next.controllers;
 
-import br.com.desafio4next.dtos.NovaConsulta;
 import br.com.desafio4next.models.Consulta;
-import br.com.desafio4next.models.Consultorio;
 import br.com.desafio4next.repositories.ConsultaRepository;
 import br.com.desafio4next.services.ConsultaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import javax.validation.Valid;
+import org.springframework.data.domain.Pageable;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/consultas")
@@ -23,27 +26,28 @@ public class ConsultaController {
 
     @PostMapping("/agendar")
     @ResponseStatus(HttpStatus.CREATED)
-    public void save(@RequestBody NovaConsulta consulta){
-        service.save(consulta);
+    public ResponseEntity<Consulta> agendaConsulta(@Valid @RequestBody Consulta consulta) {
+        return service.agendarConsulta(consulta)
+                .map(respostaCadastrar -> ResponseEntity.status(HttpStatus.CREATED).body(respostaCadastrar))
+                .orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
     }
 
     @GetMapping
-    @ResponseStatus(HttpStatus.FOUND)
-    public List<Consulta> findAllConsultas(){
-        return repository.findAll();
-
+    public Page<Consulta> retornaPorData(@PageableDefault(sort = {"dataConsulta","horaConsulta"}, direction = Sort.Direction.ASC) Pageable pageable) {
+        return repository.findAll(pageable);
     }
 
-    @GetMapping("/{consultorio}")
-    @ResponseStatus(HttpStatus.FOUND)
-    public List<Consulta> findByConsultorio(@RequestBody Consultorio consultorio){
-        return repository.findAllByConsultorio(consultorio);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteProduto(@PathVariable Long id) {
 
+        return repository.findById(id)
+                .map(resposta -> {
+                    repository.deleteById(id);
+                    return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+                })
+                .orElse(ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping("/{nome}")
-    @ResponseStatus(HttpStatus.GONE)
-    public void deleteByNome(@RequestParam String nome) {
-        service.delete(nome);
-    }
+
 }
+

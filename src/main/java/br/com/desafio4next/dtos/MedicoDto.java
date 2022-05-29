@@ -7,27 +7,25 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class NovoMedico {
-
+public class MedicoDto {
     private String nome;
     private String crm;
     private Integer idade;
     private Especialidade especialidade;
-    private List<Consulta> consulta;
+    private List<Consulta> consultas;
 
-    public NovoMedico (Medico medico) {
+    public MedicoDto(Medico medico) {
         this.nome = medico.getNome();
         this.crm = medico.getCrm();
         this.idade = medico.getIdade();
         this.especialidade = medico.getEspecialidade();
-        this.consulta = medico.getConsulta();
+        this.consultas = medico.getConsultas();
 
      }
 }
