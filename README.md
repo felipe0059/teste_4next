@@ -15,7 +15,7 @@
 Projeto em desenvolvimento, portanto até o prazo de entrega algumas tecnologias e estratégias poderão ser substituídas de acordo com a fase de produção.
 
 # Kanbans
-Foi utilizado a metodologia do próprio github para organização e monitoramento de atividades 
+Foi utilizado a metodologia do próprio github para organização e monitoramento de atividades  
 Acesso [aqui](https://github.com/felipe0059/teste_4next/projects/1).
 
 ## URLS
@@ -75,16 +75,16 @@ Consultório {
 Segurança Basic implementada
 
 - **Endpoints públicos :**
--- **GET** /consultas -> Retorna todas as consultas ordenadas por data e hora;
---**GET** /medicos/{nome} -> Retorna um médico pelo nome e todas as consultas referentes a ele;
+-- **GET** /consultas -> Retorna todas as consultas ordenadas por data e hora;  
+--**GET** /medicos/{nome} -> Retorna um médico pelo nome e todas as consultas referentes a ele;  
 
 - **Endpoints com necessidade de autenticação:** 
 (Usuario: user  /  senha: 123)
 
--- **POST** /consultas/agendar -> Agendar uma nova consulta;
--- **POST** /medicos/cadastrar -> Cadastra um novo médico no sistema;
--- **DELETE** /consultas/{id} -> Deleta uma consulta por pelo Id;
--- **DELETE** /medicos/{nome} -> Deleta um médico pelo nome;
+-- **POST** /consultas/agendar -> Agendar uma nova consulta;  
+-- **POST** /medicos/cadastrar -> Cadastra um novo médico no sistema;  
+-- **DELETE** /consultas/{id} -> Deleta uma consulta por pelo Id;  
+-- **DELETE** /medicos/{nome} -> Deleta um médico pelo nome;  
 
 ## Documentação
 
