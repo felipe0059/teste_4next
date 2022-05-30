@@ -74,9 +74,9 @@ Consultório {
 
 Segurança Basic implementada
 
-- **Endpoints públicos :**
--- **GET** /consultas -> Retorna todas as consultas ordenadas por data e hora;  
---**GET** /medicos/{nome} -> Retorna um médico pelo nome e todas as consultas referentes a ele;  
+- **Endpoints públicos :**  
+--**GET** /consultas -> Retorna todas as consultas ordenadas por data e hora;  
+--**GET** /medicos/{nome} -> Retorna um médico pelo nome e todas as consultas referentes a ele;    
 
 - **Endpoints com necessidade de autenticação:** 
 (Usuario: user  /  senha: 123)
