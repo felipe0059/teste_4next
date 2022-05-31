@@ -59,7 +59,7 @@ Consulta {
 "id":"Long",  
 "nomeMedico":"String",
 "dataConsulta":"LocalDate", (yyyy-mm-dd)  
-"horaConsulta":"LocalTime";(HH-MM-SS)  
+"horaConsulta":"LocalTime", (HH-MM-SS)  
 "numeroConsultorio": "Integer" 
 }
 ```
